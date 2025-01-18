@@ -17,7 +17,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class KillAppNow implements IXposedHookLoadPackage {
+public class LeaveHint implements IXposedHookLoadPackage {
 
     private final Set<String> previousRunningApps = new HashSet<>();
     private Context mContext;
@@ -47,7 +47,7 @@ public class KillAppNow implements IXposedHookLoadPackage {
                 "getSystemContext"
         );
         if (mContext == null) {
-            Log.e("KillAppNow", "Không lấy được systemContext. Dừng module.");
+            Log.e("LeaveHint", "Không lấy được systemContext. Dừng module.");
             return;
         }
 
@@ -117,7 +117,7 @@ public class KillAppNow implements IXposedHookLoadPackage {
                         if (!excludedPackages.contains(packageName)) {
                             forceStopApp(packageName);
                         } else {
-                            Log.d("KillAppNow", "Bỏ qua (excluded): " + packageName);
+                            Log.d("LeaveHint", "Bỏ qua (excluded): " + packageName);
                         }
                     }
                 }
@@ -127,7 +127,7 @@ public class KillAppNow implements IXposedHookLoadPackage {
                 previousRunningApps.addAll(currentRunningApps);
 
             } catch (Throwable t) {
-                Log.e("KillAppNow", "Lỗi khi phát hiện ứng dụng đã thoát", t);
+                Log.e("LeaveHint", "Lỗi khi phát hiện ứng dụng đã thoát", t);
             }
         });
     }
@@ -141,9 +141,9 @@ public class KillAppNow implements IXposedHookLoadPackage {
             ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
             // reflect hàm forceStopPackage
             XposedHelpers.callMethod(am, "forceStopPackage", packageName);
-            Log.d("KillAppNow", "Đã buộc dừng: " + packageName);
+            Log.d("LeaveHint", "Đã buộc dừng: " + packageName);
         } catch (Exception e) {
-            Log.e("KillAppNow", "Lỗi khi buộc dừng " + packageName, e);
+            Log.e("LeaveHint", "Lỗi khi buộc dừng " + packageName, e);
         }
     }
 }
