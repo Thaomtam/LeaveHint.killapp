@@ -1,4 +1,4 @@
-package com.KTA.LeaveHint;
+package com.KTAify.LeaveHint;
 
 import android.app.ActivityManager;
 import android.content.Context;
