@@ -4,19 +4,35 @@ on: [workflow_dispatch]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
+      - name: Checkout source code
+        uses: actions/checkout@v2
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+      - name: set up JDK 21
+        uses: actions/setup-java@v1
+        with:
+          java-version: 21
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Debug with Gradle
+        run: ./gradlew :app:assembleDebug
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: KTAndroid-Debug
+          path: ${{ github.workspace }}/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn
+          
+      - name: Build Release with Gradle
+        run: ./gradlew :app:assembleRelease
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: KTAndroid-Release
+          path: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
+          if-no-files-found: warn
