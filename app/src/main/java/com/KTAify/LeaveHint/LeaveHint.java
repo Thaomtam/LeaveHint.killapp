@@ -90,6 +90,7 @@ public class LeaveHint implements IXposedHookLoadPackage {
         excludedPackages.add("com.google.android.apps.photos");
         excludedPackages.add("com.drdisagree.iconify.debug");
         excludedPackages.add("com.drdisagree.iconify");
+        excludedPackages.add("com.zing.zalo");
     }
 
     /**
