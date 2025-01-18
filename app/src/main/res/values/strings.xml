@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">KillAppNow</string>
-    <string name="xposed_desc">Kill foreground app on "Back" button long-press.</string>
+    <string name="app_name">LeaveHint Killapp</string>
+    <string name="xposed_desc">Đập chết quá trình nền theo cách LeaveHint</string>
 </resources>
