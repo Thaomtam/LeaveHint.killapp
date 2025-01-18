@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.asameer.killappnow"
+    namespace = "com.KTAify.LeaveHint"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.asameer.killappnow"
+        applicationId = "com.KTAify.LeaveHint"
         minSdk = 34
         targetSdk = 34
         versionCode = 1
@@ -39,7 +39,7 @@ android {
         variant.outputs
                 .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
                 .forEach { output ->
-                    val outputFileName = "KillAppNow_${variant.versionName}.apk"
+                    val outputFileName = "LeaveHint_${variant.versionName}.apk"
                     println("OutputFileName: $outputFileName")
                     output.outputFileName = outputFileName
                 }
