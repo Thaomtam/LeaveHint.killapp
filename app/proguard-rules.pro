@@ -22,4 +22,4 @@
 
 -dontobfuscate
 
--keep class com.asameer.killappnow.KillAppNow
+-keep class com.KTAify.LeaveHint.LeaveHint
