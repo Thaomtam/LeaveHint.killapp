@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KillAppNow"
+rootProject.name = "LeaveHint"
 include(":app")
