@@ -20,7 +20,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class KillAppNow implements IXposedHookLoadPackage {
+public class LeaveHint implements IXposedHookLoadPackage {
 
     private final List<String> mKillIgnoreList = new ArrayList<>(Arrays.asList(
             "com.android.systemui",
@@ -79,7 +79,7 @@ public class KillAppNow implements IXposedHookLoadPackage {
                     Toast.makeText(mContext, "Không có ứng dụng nào để đóng.", Toast.LENGTH_SHORT).show();
                 }
             } catch (Throwable t) {
-                Log.e("KillAppNow", "Lỗi trong killForegroundApp", t);
+                Log.e("LeaveHint", "Lỗi trong killForegroundApp", t);
             }
         });
     }
